@@ -4,12 +4,11 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Recipies
 {
-    public class Equipment
+    public class Equipment : IJsonConvertible
     {
         [JsonConstructor]
         public Equipment(string description, double hourlyCost)
@@ -26,5 +25,15 @@ namespace Recipies
         public string Description { get; set; }
 
         public double HourlyCost { get; set; }
+
+        public string ConvertToJson()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void LoadFromJson(string json)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
