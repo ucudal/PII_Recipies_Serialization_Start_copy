@@ -5,7 +5,7 @@
 //-------------------------------------------------------------------------------
 
 using System.Text.Json.Serialization;
-
+using System.Text.Json;
 namespace Recipies
 {
     public class Equipment : IJsonConvertible
@@ -28,12 +28,14 @@ namespace Recipies
 
         public string ConvertToJson()
         {
-            throw new System.NotImplementedException();
+            return JsonSerializer.Serialize<Equipment>(this);
         }
 
         public void LoadFromJson(string json)
         {
-            throw new System.NotImplementedException();
+            Equipment deserialized = JsonSerializer.Deserialize<Equipment>(json);
+            this.Description = deserialized.Description;
+            this.HourlyCost = deserialized.HourlyCost;
         }
     }
 }

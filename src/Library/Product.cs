@@ -30,12 +30,14 @@ namespace Recipies
 
         public string ConvertToJson()
         {
-            throw new System.NotImplementedException();
+            return JsonSerializer.Serialize<Product>(this);
         }
 
         public void LoadFromJson(string json)
         {
-            throw new System.NotImplementedException();
+            Product deserialized = JsonSerializer.Deserialize<Product>(json);
+            this.Description = deserialized.Description;
+            this.UnitCost = deserialized.UnitCost;
         }
     }
 }

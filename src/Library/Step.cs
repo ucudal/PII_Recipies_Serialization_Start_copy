@@ -27,12 +27,16 @@ namespace Recipies
 
         public string ConvertToJson()
         {
-            throw new System.NotImplementedException();
+            return JsonSerializer.Serialize<Step>(this);
         }
 
         public void LoadFromJson(string json)
         {
-            throw new System.NotImplementedException();
+            Step deserized = JsonSerializer.Deserialize<Step>(json);
+            this.Quantity = deserized.Quantity;
+            this.Input = deserized.Input;
+            this.Time =deserized.Time;
+            this.Equipment = deserized.Equipment;
         }
 
         public Product Input { get; set; }

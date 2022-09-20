@@ -29,14 +29,16 @@ namespace Recipies
         {
             this.Steps.Remove(step);
         }
-                public string ConvertToJson()
+        public string ConvertToJson()
         {
-            throw new System.NotImplementedException();
+            return JsonSerializer.Serialize<Recipe>(this);
         }
 
         public void LoadFromJson(string json)
         {
-            throw new System.NotImplementedException();
+            Recipe desarized = JsonSerializer.Deserialize<Recipe>(json);
+            this.FinalProduct = desarized.FinalProduct;
+            this.Steps = desarized.Steps;
         }
     }
 }
